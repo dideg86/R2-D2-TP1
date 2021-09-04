@@ -17,7 +17,7 @@ public class Promocion {
         Atraccion2 = atraccion2;
     }
 
-    // Métodos de la clase
+    // Metodos de la clase
     public String getNombre() {
         return Nombre;
     }
@@ -34,19 +34,8 @@ public class Promocion {
         return Atraccion1.getCosto() + Atraccion2.getCosto();
     }
 
-    public Boolean EsDisponible(){
-        return Atraccion1.EsDisponible() && Atraccion2.EsDisponible();
-    }
-
     public Double TiempoPromedioTotal(){
         return Atraccion2.getTiempoPromedio() + Atraccion1.getTiempoPromedio();
     }
 
-    public void Comprar(){
-        if(!Atraccion1.EsDisponible() || !Atraccion2.EsDisponible())
-            return; // Manejar excepcion
-
-        Atraccion2.Comprar();
-        Atraccion1.Comprar();
-    }
 }
