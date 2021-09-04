@@ -12,7 +12,7 @@ public class PromocionPorcentual extends Promocion {
         Descuento = descuento;
     }
 
-    // Métodos de la clase
+    // MÃ©todos de la clase
     public Double getDescuento() {
         return Descuento;
     }
