@@ -1,5 +1,7 @@
 package com.DiegoDegracia.Modelos;
 
+import java.util.Objects;
+
 public class Usuario {
     // Propiedades
     private String Nombre;
@@ -32,8 +34,31 @@ public class Usuario {
         return TiempoDisponible;
     }
 
-    public void DescontarCompra(Integer monedasDeOro, Double tiempo){
-        Presupuesto -= monedasDeOro;
-        TiempoDisponible -= tiempo;
+    public boolean DescontarCompra(Integer monedasDeOro, Double tiempo){
+        if(this.getPresupuesto() - monedasDeOro >= 0 && this.getTiempoDisponible() - tiempo >= 0){
+            this.Presupuesto -= monedasDeOro;
+            this.TiempoDisponible -= tiempo;
+            return true;
+        }
+
+        return false; // No se hizo la transacción
+    }
+
+    public void DevolucionCompra(Integer monedasDeOro, Double tiempo){
+        this.Presupuesto += monedasDeOro;
+        this.TiempoDisponible += tiempo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Nombre.equals(usuario.Nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Nombre);
     }
 }
