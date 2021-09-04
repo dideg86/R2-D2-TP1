@@ -10,7 +10,7 @@ public class PromocionAbsoluta extends Promocion {
         PrecioTotal = precioTotal;
     }
 
-    // Métodos de la clase
+    // MÃ©todos de la clase
     @Override
     public Integer getPrecioTotal() {
         return PrecioTotal;
