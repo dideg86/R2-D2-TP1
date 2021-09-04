@@ -1,5 +1,7 @@
 package com.DiegoDegracia.Modelos;
 
+import java.util.Objects;
+
 public class Atraccion {
     // Propiedades del objeto
     private String Nombre;
@@ -7,7 +9,6 @@ public class Atraccion {
     private Double TiempoPromedio;
     private Integer Cupo;
     private TipoAventura Tipo;
-    private Integer CantidadCompras;
 
     // Constructor del objeto
     public Atraccion(String nombre, Integer costo, Double tiempoPromedio, Integer cupo, TipoAventura tipo) {
@@ -16,10 +17,9 @@ public class Atraccion {
         TiempoPromedio = tiempoPromedio;
         Cupo = cupo;
         Tipo = tipo;
-        CantidadCompras = 0;
     }
 
-    // Métodos del objeto.
+    // Metodos del objeto.
     public String getNombre() {
         return Nombre;
     }
@@ -40,11 +40,16 @@ public class Atraccion {
         return Tipo;
     }
 
-    public void Comprar(){
-        CantidadCompras += 1;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Atraccion atraccion = (Atraccion) o;
+        return Nombre.equals(atraccion.Nombre) && Tipo == atraccion.Tipo;
     }
 
-    public Boolean EsDisponible(){
-        return Cupo - CantidadCompras > 0;
+    @Override
+    public int hashCode() {
+        return Objects.hash(Nombre, Tipo);
     }
 }
