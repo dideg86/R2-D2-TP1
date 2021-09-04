@@ -12,7 +12,7 @@ public class PromocionAxB extends Promocion {
         AtraccionDeRegalo = atraccionDeRegalo;
     }
 
-    // Métodos de la clase
+    // MÃ©todos de la clase
     @Override
     public List<Atraccion> getAtracciones() {
         List<Atraccion> atracciones = super.getAtracciones();
@@ -20,32 +20,9 @@ public class PromocionAxB extends Promocion {
 
         return atracciones;
     }
-
-    @Override
-    public Boolean EsDisponible() {
-        return super.EsDisponible() && AtraccionDeRegalo.EsDisponible();
-    }
-
     @Override
     public Double TiempoPromedioTotal() {
         return super.TiempoPromedioTotal() + AtraccionDeRegalo.getTiempoPromedio();
-    }
-
-    @Override
-    public void Comprar() {
-        List<Atraccion> atracciones = super.getAtracciones();
-        atracciones.add(getAtraccionDeRegalo());
-
-        // Verifico que estén todos disponibles
-        for (Atraccion atraccion: atracciones) {
-            if(!atraccion.EsDisponible())
-                return; // Manejar la excepcion
-        }
-
-        // Compro las atracciones
-        for (Atraccion atraccion: atracciones) {
-            atraccion.Comprar();
-        }
     }
 
     public Atraccion getAtraccionDeRegalo() {
