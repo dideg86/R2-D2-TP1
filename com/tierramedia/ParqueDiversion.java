@@ -1,9 +1,13 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.tierramedia.modelos.Atraccion;
+import com.tierramedia.modelos.Promocion;
+import com.tierramedia.modelos.Usuario;
 
 public class ParqueDiversion {
     private List<Atraccion> Atracciones;

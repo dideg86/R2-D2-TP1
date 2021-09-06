@@ -1,4 +1,4 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia.modelos;
 
 import java.nio.DoubleBuffer;
 import java.util.ArrayList;
@@ -30,7 +30,15 @@ public class Promocion {
         return atracciones;
     }
 
-    public Integer getPrecioTotal() {
+    public Atraccion getAtraccion1() {
+		return Atraccion1;
+	}
+
+	public Atraccion getAtraccion2() {
+		return Atraccion2;
+	}
+
+	public Integer getPrecioTotal() {
         return Atraccion1.getCosto() + Atraccion2.getCosto();
     }
 

@@ -1,4 +1,4 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia.modelos;
 
 import java.util.Objects;
 

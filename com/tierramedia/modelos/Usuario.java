@@ -1,5 +1,7 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Usuario {
@@ -15,6 +17,10 @@ public class Usuario {
         Preferencia = preferencia;
         Presupuesto = presupuesto;
         TiempoDisponible = tiempoDisponible;
+    }
+    
+    private static List [] atracciones = new CoincidenciasUsuario() {
+    	
     }
 
     // Métodos de la clase

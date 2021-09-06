@@ -1,4 +1,4 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia.modelos;
 
 import java.util.List;
 
@@ -18,6 +18,6 @@ public class PromocionPorcentual extends Promocion {
     }
 
     public Integer getPrecioTotal() {
-        return (int)Math.round(getPrecioTotal() * Descuento);
+        return (int)Math.round(getPrecioTotal() * (1-Descuento));
     }
 }

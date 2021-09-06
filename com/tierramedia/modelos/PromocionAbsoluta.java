@@ -1,4 +1,4 @@
-package com.DiegoDegracia.Modelos;
+package com.tierramedia.modelos;
 
 public class PromocionAbsoluta extends Promocion {
     // Propiedades de la clase
