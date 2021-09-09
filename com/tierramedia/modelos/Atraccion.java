@@ -1,5 +1,7 @@
 package com.tierramedia.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Atraccion {
@@ -40,7 +42,9 @@ public class Atraccion {
         return Tipo;
     }
     
+    public static List<Atraccion> atracciones = new ArrayList<>();
     
+    public 
 
     @Override
     public boolean equals(Object o) {

@@ -38,7 +38,7 @@ public class Main {
         PromocionAbsoluta PackDegustacion = new PromocionAbsoluta("Pack Degustacion", Lothlorien, LaComarca, 36);
         PromocionAxB PackPaisajes = new PromocionAxB("Pack Paisajes", MinasTirith, AbismoDeHellm,Erebor);
         
-        int idUsuario = 0;
+       /* int idUsuario = 0;
         System.out.println("Usuarios" + "\n");
         // foreach forma 1
         for (Usuario usuario: usuarios) {
@@ -55,7 +55,7 @@ public class Main {
         			&& atraccion.getTiempoPromedio().doubleValue() <= usuarioElegido.getTiempoDisponible().doubleValue()) {
         		atraccionesDelUsuario.add(atraccion);
         	}
-        }
+        }*/
 
         // extraer promociones de la preferencia del usuario
         List<Promocion> promocionesSugeridas = new ArrayList<>();
