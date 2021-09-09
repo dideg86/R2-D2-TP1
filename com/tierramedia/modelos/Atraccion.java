@@ -39,6 +39,8 @@ public class Atraccion {
     public TipoAventura getTipo() {
         return Tipo;
     }
+    
+    
 
     @Override
     public boolean equals(Object o) {
