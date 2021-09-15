@@ -35,12 +35,12 @@ public class Terminal {
                 }
 
        		
-        		salidaPorUsuario(); //prueba si funciona la escritura del txt
-                PantallaInicio();
+        		PantallaInicio(usuario);
                 PantallaPromocionesPriorizadas(promociones);
                 PantallaAtraccionesPriorizadas(atracciones);
                 PantallaFooter();
                 PantallaCompra(usuario);
+                salidaPorUsuario(usuario); 
                 
                 
             }
@@ -51,10 +51,10 @@ public class Terminal {
     }
 
     // Pantallas
-    private void PantallaInicio(){
+    private void PantallaInicio(Usuario usuario){
     	System.out.println("-------------------------------------------------------");
     	System.out.println("-------------------------------------------------------");
-        System.out.println("Bienvenido al menú de compras del parque de diversiones");
+        System.out.println(usuario.getNombre().toUpperCase()+": Bienvenido al menú de compras del parque de diversiones ");
         System.out.println("-------------------------------------------------------");
         System.out.println();
         System.out.println("A continuación, se muestran las opciones que puede comprar");
@@ -67,7 +67,7 @@ public class Terminal {
         System.out.println("PROMOCIONES DISPONIBLES:");
         for (Promocion promocion:promociones) {
             System.out.println();
-            System.out.println(alias + count + " - " + "Promocion: "+promocion.getNombre());
+            System.out.println(alias + count + " - " + "PROMOCION: "+promocion.getNombre());
             System.out.println("Precio: " + promocion.getPrecioTotal());
             System.out.println("Tiempo aproximado de duración: " + promocion.TiempoPromedioTotal());
             System.out.println("Atracciones incluidas en la promoción");
@@ -88,7 +88,7 @@ public class Terminal {
         System.out.println("ATRACCIONES DISPONIBLES:");
         for (Atraccion atraccion:atracciones) {
             System.out.println();
-            System.out.println(alias + count + " - " + "Atraccion: "+atraccion.getNombre());
+            System.out.println(alias + count + " - " + "ATRACCION: "+atraccion.getNombre());
             System.out.println("Precio: " + atraccion.getCosto());
             System.out.println("Tiempo aproximado de duración: " + atraccion.getTiempoPromedio());
 
@@ -111,6 +111,7 @@ public class Terminal {
 
         // Si no contiene para comprar promoción o comprar atracción
         if(!opcion.toUpperCase(Locale.ROOT).contains("P") && !opcion.toUpperCase(Locale.ROOT).contains("A")){
+        	System.out.println("-------------------------------------------------------");
             System.out.println("OPCIÓN INCORRECTA!!! Debe ingresar sólo p (promoción) o a (atracción) seguido");
             System.out.println("del número de opción disponible.");
             scan.nextLine(); // Esto es para que frene la ejecución en pantalla
@@ -131,6 +132,7 @@ public class Terminal {
                 // Si está todo ok
                 if(resultado){
                 	System.out.println();
+                	System.out.println("-------------------------------------------------------");
                 	System.out.println("Promoción comprada correctamente.");
                 }else {
                 	System.out.println();
@@ -160,6 +162,7 @@ public class Terminal {
                 // Si está todo ok
                 if(resultado){
                 	System.out.println();
+                	System.out.println("-------------------------------------------------------");
                 	System.out.println("Atracción comprada correctamente.");
                 }else {
                     System.out.println("Usted no disponde de los fondos necesarios para comprar la atracción.");
@@ -175,7 +178,7 @@ public class Terminal {
         // Para frenar la pantalla
         scan.nextLine();
     }
-    private void PantallaFinalizacionCompra(Usuario usuario){
+    private void PantallaFinalizacionCompra(Usuario usuario) throws IOException {
         List<Promocion> promocionesCompradas = Parque.getPromocionesCompradasUsuario(usuario);
         List<Atraccion> atraccionesCompradas = Parque.getAtraccionesCompradasUsuario(usuario);
 
@@ -225,7 +228,7 @@ public class Terminal {
                 System.out.println("Costo total de la atracción: " + atraccion.getCosto());
                 System.out.println("Tiempo necesario para la atracción: " + atraccion.getTiempoPromedio());
                 System.out.println();
-
+                
                 costoTotal += atraccion.getCosto();
                 tiempoPromedioTotal += atraccion.getTiempoPromedio();
             }
@@ -235,7 +238,7 @@ public class Terminal {
         System.out.println();
         System.out.println("Costo total en monedas: " + costoTotal);
         System.out.println("Tiempo requerido: " + tiempoPromedioTotal);
-
+      
         // Para frenar la pantalla
         scan.nextLine();
         
@@ -281,19 +284,26 @@ public class Terminal {
         return ret;
     }
     
-    //prueba de escritura de txt
-    public void salidaPorUsuario() throws IOException {
-    
-    	PrintWriter salida = new PrintWriter(new FileWriter("ArchivoSalidaDePrueba.txt"));
-		
-		int nroCualquiera = 12345678;
-		String s = "Escribir un nro de prueba:";
-		salida.print(s);    
-		salida.println(" " + nroCualquiera);
-		
+    //Imprimo el archivo con el resumen
+	public void salidaPorUsuario(Usuario usuario) throws IOException {
+		PrintWriter salida = new PrintWriter(new FileWriter(usuario.getNombre().toUpperCase() + ".txt"));
 
+	
+		salida.println("----------------------------------------");
+		salida.println("Usuario " + usuario.getNombre());
+		salida.println("----------------------------------------");
+		salida.println("Listado de promociones compradas:");
+		salida.println("Promocion: " + Parque.getPromocionesCompradasUsuario(usuario));
+		salida.println("----------------------------------------");
+		salida.println("Listado de atracciones compradas:");
+		salida.println("Atraccion: " + Parque.getAtraccionesCompradasUsuario(usuario));
+		salida.println("----------------------------------------");
+		salida.println("Saldo: " + usuario.getPresupuesto() + " monedas");
+		salida.println("----------------------------------------");
+		salida.println("Tiempo sobrante: " + usuario.getTiempoDisponible() + " horas");
+		
 		salida.close();
-    }
+	}
     	
    	
     

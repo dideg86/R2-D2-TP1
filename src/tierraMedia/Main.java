@@ -23,12 +23,6 @@ public class Main {
         PromocionAbsoluta PackDegustacion = new PromocionAbsoluta("Pack Degustacion", Lothlorien, LaComarca, 36);
         PromocionAxB PackPaisajes = new PromocionAxB("Pack Paisajes", MinasTirith, AbismoDeHellm,Erebor);
 
-/*        // Definir los usuarios - Levantar con un TXT
-        Usuario Eowyn = new Usuario("Eowyn",TipoAventura.AVENTURA, 10, 8.0);
-        Usuario Gandalf = new Usuario("Gandalf", TipoAventura.PAISAJE, 100, 5.0);
-        Usuario Sam = new Usuario("Sam", TipoAventura.DEGUSTACION, 36, 8.0);
-        Usuario Galadriel = new Usuario("Galadriel", TipoAventura.PAISAJE, 120, 8.0); */
-
         List<Atraccion> listadoAtracciones = new ArrayList<>();
         listadoAtracciones.add(Moria);
         listadoAtracciones.add(MinasTirith);
@@ -44,15 +38,9 @@ public class Main {
         listadoPromociones.add(PackDegustacion);
         listadoPromociones.add(PackPaisajes); 
 
-/*        List<Usuario> listadoUsuario = new ArrayList<>();
-        listadoUsuario.add(Eowyn);
-        listadoUsuario.add(Gandalf);
-        listadoUsuario.add(Sam);
-        listadoUsuario.add(Galadriel);*/
-
         AlmacenFicheros almacen = new AlmacenFicheros();
 
-        List<Usuario> listadoUsuario = almacen.LeerUsuariosDesdeFichero("usuarios.txt");
+        List<Usuario> listadoUsuario = almacen.LeerUsuariosDesdeFichero("usuarios.txt"); //para que no aparezca ﻿ al comienzo cambio la codificacion del txt a ANSI o UNICODE
         //List<Atraccion> listadoAtracciones = almacen.LeerAtraccionesDesdeFichero("atracciones.txt");
         //List<Promocion> listadoPromociones = almacen.LeerPromocionesDesdeFichero("promociones.txt");
 

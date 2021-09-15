@@ -43,6 +43,7 @@ public class AlmacenFicheros {
         return listadoUsuario;
     }
     
+       //Metodo para leer las atracciones desde txt
 /*    public List<Atraccion> LeerAtraccionesDesdeFichero(String pathArchivo){
         List<Atraccion> listadoAtracciones = new ArrayList<>();
         try{
@@ -73,8 +74,8 @@ public class AlmacenFicheros {
         return listadoAtracciones;
     } */
     
-/*    //metodo sin terminar para leer las promociones desde txt    
-    public List<Promocion> LeerPromocionesDesdeFichero(String pathArchivo){
+      //Metodo para leer las promociones desde txt - SIN TERMINAR    
+/*    public List<Promocion> LeerPromocionesDesdeFichero(String pathArchivo){
         List<Promocion> listadoPromociones = new ArrayList<>();
         try{
             File archivo = new File(pathArchivo);
@@ -121,7 +122,7 @@ public class AlmacenFicheros {
     //verificar si es numerico
 	public static boolean esNumerico(String trim) {
 		// TODO Auto-generated method stub
-		return trim.matches("-?\\d+(\\.\\d+)?");
+		return trim.matches("-?\\d+(\\.\\d+)?"); // foolprof
 	} */ 
 	
 }
