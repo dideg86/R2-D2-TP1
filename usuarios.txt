@@ -1,0 +1,4 @@
+﻿Eowyn,AVENTURA,10,8.0
+Gandalf,PAISAJE,100,5.0
+Sam,DEGUSTACION,36,8.0
+Galadriel,PAISAJE,120,6.0

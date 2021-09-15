@@ -1,0 +1,3 @@
+﻿Pack Aventura,Bosque Negro,Mordor,0.2
+Pack Degustacion,Lothlorien,La Comarca,36
+Pack Paisajes,Minas Tirith,Abismo de Helm,Erebor
