@@ -44,7 +44,7 @@ public class AlmacenFicheros {
     }
     
        //Metodo para leer las atracciones desde txt
-/*    public List<Atraccion> LeerAtraccionesDesdeFichero(String pathArchivo){
+    public List<Atraccion> LeerAtraccionesDesdeFichero(String pathArchivo){
         List<Atraccion> listadoAtracciones = new ArrayList<>();
         try{
             File archivo = new File(pathArchivo);
@@ -72,58 +72,86 @@ public class AlmacenFicheros {
             System.out.println(ex);
         }
         return listadoAtracciones;
-    } */
+    } 
     
       //Metodo para leer las promociones desde txt - SIN TERMINAR    
-/*    public List<Promocion> LeerPromocionesDesdeFichero(String pathArchivo){
-        List<Promocion> listadoPromociones = new ArrayList<>();
+    public List<Promocion> LeerPromocionesDesdeFichero(String pathArchivo, List<Atraccion> Atracciones){
         try{
             File archivo = new File(pathArchivo);
             FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
+            List<Promocion> promociones = new ArrayList();
 
             String linea = br.readLine();
             while(linea != null){
             	String[] valores = linea.split(",");
             	
-            	//acá comienza lo distinto
-            	if (!esNumerico(valores[valores.length - 1].trim())) {
-            		String nombre = valores[0];
-            		String atraccion1 = valores[1];
-            		String atraccion2 = valores[1];
-            		String atraccionDeRegalo = valores[1];
-            		
-            		Promocion nuevaPromocion = new 
-            		
-            		PromocionAxB nuevaPromocion = new PromocionAxB (valores[0]), 
+            	String nombre = valores[0].trim();
+            	TipoPromocion promocion = TipoPromocion.valueOf(valores[1].trim());
+            	
+            	
+            	if (promocion == TipoPromocion.AXB) {
+            		List<Atraccion> listado = new ArrayList();
+            		for (Atraccion atraccion : Atracciones) {
+            			if (atraccion.getNombre().contains(valores[2].trim())) {
+            				listado.add(atraccion);
+            			}          			
+            			if (atraccion.getNombre().contains(valores[3].trim())) {
+            				listado.add(atraccion);
+            			}  
+            			if (atraccion.getNombre().contains(valores[4].trim())) {
+            				listado.add(atraccion);
+            			}  
+					}
+            		PromocionAxB promocionAxB = new PromocionAxB(nombre, listado.get(0), listado.get(1), listado.get(2));
+            		promociones.add(promocionAxB);
             	}
-                
-                
-                String nombre = valores[0];
-                TipoAventura preferencia = TipoAventura.valueOf(valores[1]);
-                Integer costo = Integer.valueOf(valores[1]);
-                Double tiempo = Double.valueOf(valores[2]);
-                Integer cupo = Integer.valueOf(valores[3]);
-                
-                Promocion nuevaPromocion = new Promocion(nombre, costo, tiempo, cupo, preferencia);
-                listadoPromociones.add(nuevaPromocion);
-
+            	
+            	if (promocion == TipoPromocion.ABSOLUTA) {
+            		List<Atraccion> listado = new ArrayList();
+            		for (Atraccion atraccion : Atracciones) {
+            			if (atraccion.getNombre().contains(valores[2].trim())) {
+            				listado.add(atraccion);
+            			}          			
+            			if (atraccion.getNombre().contains(valores[3].trim())) {
+            				listado.add(atraccion);
+            			}  
+					}
+            		Integer valorPromocion = Integer.valueOf(valores[4]);
+            		PromocionAbsoluta promocionAbsoluta = new PromocionAbsoluta(nombre, listado.get(0), listado.get(1), valorPromocion);
+            		promociones.add(promocionAbsoluta);
+            	}
+            	
+            	if (promocion == TipoPromocion.PORCENTUAL) {
+            		List<Atraccion> listado = new ArrayList();
+            		for (Atraccion atraccion : Atracciones) {
+            			if (atraccion.getNombre().contains(valores[2].trim())) {
+            				listado.add(atraccion);
+            			}          			
+            			if (atraccion.getNombre().contains(valores[3].trim())) {
+            				listado.add(atraccion);
+            			}  
+					}
+            		Double valorDescuento = Double.valueOf(valores[4]);
+            		PromocionPorcentual promocionPorcentual = new PromocionPorcentual(nombre, listado.get(0), listado.get(1), valorDescuento);
+            		promociones.add(promocionPorcentual);
+            	}
+            		
                 linea = br.readLine();
             }
-
-            return listadoPromociones;
+            return promociones;
         }catch (Exception ex)
         {
             System.out.println(ex);
         }
-        return listadoPromociones;
+		return null;
     }
 
     //verificar si es numerico
 	public static boolean esNumerico(String trim) {
 		// TODO Auto-generated method stub
 		return trim.matches("-?\\d+(\\.\\d+)?"); // foolprof
-	} */ 
+	} 
 	
 }
 

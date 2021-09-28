@@ -267,7 +267,7 @@ public class Terminal {
     private List<Atraccion> AtraccionesPriorizadasUsuario(Usuario usuario){
         List<Atraccion> atraccionesComprables = Parque.getAtraccionesComprables(usuario);
 
-        Comparator<Atraccion> comp = Comparator.comparing((Atraccion a) -> a.getCosto()).thenComparing(a -> a.getTiempoPromedio()).reversed();
+        Comparator<Atraccion> comp = Comparator.comparing((Atraccion a) -> a.getCosto()).thenComparing(a -> a.getTiempoPromedio()).reversed(); // el -> separa parametros de implementacion
         Collections.sort(atraccionesComprables,comp);
 
         List<Atraccion> ret = new ArrayList<>();
@@ -287,16 +287,25 @@ public class Terminal {
     //Imprimo el archivo con el resumen
 	public void salidaPorUsuario(Usuario usuario) throws IOException {
 		PrintWriter salida = new PrintWriter(new FileWriter(usuario.getNombre().toUpperCase() + ".txt"));
-
+		String listadoAtracciones = "";
+		String listadoPromociones = "";
+		
+		for (Atraccion atraccion : Parque.getAtraccionesCompradasUsuario(usuario)) {
+			listadoAtracciones += atraccion.getNombre() + ", ";	
+		}
+		
+		for (Promocion promocion : Parque.getPromocionesCompradasUsuario(usuario)) {
+			listadoPromociones += promocion.getNombre() + ", ";
+		}
 	
 		salida.println("----------------------------------------");
 		salida.println("Usuario " + usuario.getNombre());
 		salida.println("----------------------------------------");
 		salida.println("Listado de promociones compradas:");
-		salida.println("Promocion: " + Parque.getPromocionesCompradasUsuario(usuario));
+		salida.println("Promocion: " + listadoPromociones);
 		salida.println("----------------------------------------");
 		salida.println("Listado de atracciones compradas:");
-		salida.println("Atraccion: " + Parque.getAtraccionesCompradasUsuario(usuario));
+		salida.println("Atraccion: " + listadoAtracciones);
 		salida.println("----------------------------------------");
 		salida.println("Saldo: " + usuario.getPresupuesto() + " monedas");
 		salida.println("----------------------------------------");

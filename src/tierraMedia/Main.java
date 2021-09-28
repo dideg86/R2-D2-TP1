@@ -8,7 +8,7 @@ public class Main {
 	private List<Atraccion> Atraccion;
 
     public static void main(String[] args) throws IOException {
-        // Primeramente a definir las atracciones - Levantar con un TXT
+/*        // Primeramente a definir las atracciones - Levantar con un TXT
         Atraccion Moria = new Atraccion("Moria", 10, 2.0, 6, TipoAventura.AVENTURA);
         Atraccion MinasTirith = new Atraccion("Minas Tirith", 5, 2.5, 25, TipoAventura.PAISAJE);
         Atraccion LaComarca = new Atraccion("La Comarca", 3, 6.5, 150, TipoAventura.DEGUSTACION);
@@ -16,10 +16,10 @@ public class Main {
         Atraccion AbismoDeHellm = new Atraccion("Abismo de Hellm", 5, 2.0, 15, TipoAventura.PAISAJE);
         Atraccion Lothlorien = new Atraccion("Lothlórien", 35, 1.0, 30, TipoAventura.DEGUSTACION);
         Atraccion Erebor = new Atraccion("Erebor", 12, 3.0, 32, TipoAventura.PAISAJE);
-        Atraccion BosqueNegro = new Atraccion("Bosque Negro", 3, 4.0,12,TipoAventura.AVENTURA); 
+        Atraccion BosqueNegro = new Atraccion("Bosque Negro", 3, 4.0,12,TipoAventura.AVENTURA); */
 
         // Definir las promociones - Levantar con un TXT
-        PromocionPorcentual PackAventura = new PromocionPorcentual("Pack Aventura", BosqueNegro, Mordor,0.2);
+/*        PromocionPorcentual PackAventura = new PromocionPorcentual("Pack Aventura", BosqueNegro, Mordor,0.2);
         PromocionAbsoluta PackDegustacion = new PromocionAbsoluta("Pack Degustacion", Lothlorien, LaComarca, 36);
         PromocionAxB PackPaisajes = new PromocionAxB("Pack Paisajes", MinasTirith, AbismoDeHellm,Erebor);
 
@@ -36,13 +36,13 @@ public class Main {
         List<Promocion> listadoPromociones = new ArrayList<>();
         listadoPromociones.add(PackAventura);
         listadoPromociones.add(PackDegustacion);
-        listadoPromociones.add(PackPaisajes); 
+        listadoPromociones.add(PackPaisajes);*/
 
         AlmacenFicheros almacen = new AlmacenFicheros();
 
         List<Usuario> listadoUsuario = almacen.LeerUsuariosDesdeFichero("usuarios.txt"); //para que no aparezca ï»¿ al comienzo cambio la codificacion del txt a ANSI o UNICODE
-        //List<Atraccion> listadoAtracciones = almacen.LeerAtraccionesDesdeFichero("atracciones.txt");
-        //List<Promocion> listadoPromociones = almacen.LeerPromocionesDesdeFichero("promociones.txt");
+        List<Atraccion> listadoAtracciones = almacen.LeerAtraccionesDesdeFichero("atracciones.txt");
+        List<Promocion> listadoPromociones = almacen.LeerPromocionesDesdeFichero("promociones.txt", listadoAtracciones);
 
         ParqueDiversion ParqueGeneral = new ParqueDiversion(listadoAtracciones, listadoPromociones);
 
